@@ -91,8 +91,6 @@ def message_out(message):
 run = True
 while run:
     clock.tick(FPS)
-
-    draw()
     
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
@@ -109,6 +107,8 @@ while run:
                         guessed.append(ltr)
                         if ltr not in word:
                             hangman_status+=1
+        
+    draw()
             
     won = True
     for every_letter in word:
