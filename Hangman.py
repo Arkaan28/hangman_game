@@ -83,6 +83,12 @@ def draw():
 
 
 # win/lose display
+def message_out(message):
+    won_text = WORD_FONT.render(message, 1, BLACK)
+    win.fill(WHITE)
+    win.blit(won_text, (WIDTH/2 - won_text.get_width()/2, HEIGHT/2 - won_text.get_height()/2))
+    pygame.display.update()
+    pygame.time.delay(6000)
 
 
 run = True
@@ -107,23 +113,18 @@ while run:
                         if ltr not in word:
                             hangman_status+=1
             
-            won = True
-            for every_letter in word:
-                if every_letter not in guessed:
-                    won = False
-                    break 
+    won = True
+    for every_letter in word:
+        if every_letter not in guessed:
+            won = False
+            break 
             
-            if won:
-                print("Won")
-                won_text = WORD_FONT.render("You WON!!!!!", 1, BLACK)
-                win.fill(WHITE)
-                win.blit(won_text, (WIDTH/2 - won_text.get_width()/2, HEIGHT/2)- won_text.get_height/2)
-                pygame.display.update()
-                pygame.time.delay(6000)
-                break
+    if won:
+        message_out("You Won!")
+        break
 
-            if hangman_status == 6:
-                print("Lost")
-                break
+    if hangman_status == 6:
+        message_out("You Lost!")
+        break
 
-pygame.quit()
+pygame.quit() 
