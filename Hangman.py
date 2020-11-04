@@ -2,9 +2,6 @@ import pygame
 import os
 import math
 
-from pygame import get_sdl_byteorder
-
-
 # setup display
 pygame.init()
 WIDTH,HEIGHT = 900, 600
